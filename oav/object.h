@@ -29,9 +29,14 @@ namespace oav {
 		~value()
 		{ }
 
-		template<typename T>
-		value(const T& t)
-			: value_(t)
+		value(const V& v)
+			: value_(v)
+		{ }
+		value(const array<K,V>& a)
+			: value_(a)
+		{ }
+		value(const object<K,V>& o)
+			: value_(o)
 		{ }
 		template<typename T>
 		value& operator=(const T& t)
@@ -40,11 +45,6 @@ namespace oav {
 
 			return *this;
 		}
-		
-		template<typename... T>
-		value(T&& ...t)
-			: value_(std::forward((t))...)
-		{ }
 		
 		bool is_value() const
 		{

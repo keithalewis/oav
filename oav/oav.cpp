@@ -10,15 +10,15 @@ using json_object = oav::object<std::string, json_variant>;
 using json_array = oav::array<std::string, json_variant>;
 using json_value = oav::value<std::string, json_variant>;
 
-#if 0	
+	
 void test_object()
 {
 	{
 		json_object o{
-			{"null", {}},
-			{"number", 1.23},
-			{"string", "foo"},
-			{"boolean", true}
+			{"null", json_value{}},
+			{"number", json_value{1.23}},
+			{"string", json_value{"foo"}},
+			{"boolean", json_value{true}}
 		};
 		assert (o.size() == 4);
 		assert (o["null"] == json_value{});
@@ -26,21 +26,20 @@ void test_object()
 		assert (o["string"] == json_value{"foo"});
 		assert (o["boolean"] == json_value{true});
 	}
-	{
+/*
+{
 		json_object o  = {
 			{"null", {}},
 			{"number", 1.23},
 			{"string", "foo"},
 			{"boolean", true},
 		};
-		/*
 		o["object"] = o;
 		assert (o.size()) == 5);
-//		const auto& oo = o["object"];
-		*/
+		const auto& oo = o["object"];
 	}
+	*/
 }
-#endif
 
 void test_array()
 {
@@ -80,7 +79,7 @@ void test_value()
 }
 int main()
 {
-	//test_object();
+	test_object();
 	test_array();
 	test_value();
 
