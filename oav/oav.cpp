@@ -43,12 +43,12 @@ void test_object()
 #endif
 
 void test_array()
-{/*
+{
 	{
 		json_array a{json_value{}, json_value{1.2}, json_value{"foo"}, json_value{true}};
 		assert (a.size() == 4);
 		assert (a[1] == json_value{1.2});
-	}
+	}/*
 	{
 		json_array a{{}, 1.2, "foo", true};
 		assert (a.size() == 4);

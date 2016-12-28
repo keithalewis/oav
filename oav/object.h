@@ -40,12 +40,12 @@ namespace oav {
 
 			return *this;
 		}
-		/*
+		
 		template<typename... T>
 		value(T&& ...t)
-			: value_(std::forward(value(t))...)
+			: value_(std::forward((t))...)
 		{ }
-		*/
+		
 		bool is_value() const
 		{
 			return value_.index() == 0;
@@ -85,6 +85,7 @@ namespace oav {
 			return operator==(V(t));
 		}
 
+		// object index
 		value<K,V>& operator[](const K& k)
 		{
 			return get<2>(value_)[k];
@@ -94,6 +95,7 @@ namespace oav {
 			return get<2>(value_)[k];
 		}
 
+		// array index
 		value<K,V>& operator[](size_t j)
 		{
 			return get<1>(value_)[j];
