@@ -10,7 +10,8 @@ using json_object = oav::object<std::string, json_variant>;
 using json_array = oav::array<std::string, json_variant>;
 using json_value = oav::value<std::string, json_variant>;
 
-	
+using json_index = oav::index<std::string>;
+
 void test_object()
 {
 	{
@@ -47,12 +48,14 @@ void test_array()
 		json_array a{json_value{}, json_value{1.2}, json_value{"foo"}, json_value{true}};
 		assert (a.size() == 4);
 		assert (a[1] == json_value{1.2});
-	}/*
+	}
+	/*
 	{
 		json_array a{{}, 1.2, "foo", true};
 		assert (a.size() == 4);
 		assert (a[1] == json_value{1.2});
-	}*/
+	}
+	*/
 }
 
 void test_value()
@@ -76,7 +79,22 @@ void test_value()
 		assert (v == json_variant{true});
 		assert (v == true);
 	}
+	{
+		json_value v{1.2};
+		assert (v == 1.2);
+		v = 2.3;
+		assert (v == 2.3);
+		v = "foo";
+		assert (v == "foo");
+		v = false;
+		assert (v == false);
+	}
 }
+void test_index()
+{
+	json_index i;
+}
+
 int main()
 {
 	test_object();
